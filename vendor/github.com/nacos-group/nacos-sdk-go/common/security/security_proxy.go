@@ -137,7 +137,7 @@ func (ac *AuthClient) login(server constant.ServerConfig) (bool, error) {
 		err = json.Unmarshal(bytes, &result)
 
 		if err != nil {
-		  log.Info(fmt.Sprintf("========================login error 3=%s", err))
+		  log.Info(fmt.Sprintf("========================login error 4=%s", err))
 			return false, err
 		}
 
