@@ -56,7 +56,7 @@ func (ac *AuthClient) AutoRefresh() {
 	}
 
 	go func() {
-		ticker := time.NewTicker(time.Millisecond * 5)
+		ticker := time.NewTicker(time.Millisecond * 30*1000)
     log.Printf("=====================into security_proxy.AutoRefresh")
 		for range ticker.C {
 		  log.Printf("=====================into security_proxy.AutoRefresh for")
