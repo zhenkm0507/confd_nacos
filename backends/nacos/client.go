@@ -55,7 +55,7 @@ func NewNacosClient(nodes []string, group string, config constant.ClientConfig) 
 		"serverConfigs": servers,
 		"clientConfig": constant.ClientConfig{
 			TimeoutMs:           20000,
-			ListenInterval:      10000,
+			ListenInterval:      30000,
 			NotLoadCacheAtStart: true,
 			NamespaceId:	     config.NamespaceId,
 			AccessKey: 			 config.AccessKey,
@@ -72,7 +72,7 @@ func NewNacosClient(nodes []string, group string, config constant.ClientConfig) 
 		"serverConfigs": servers,
 		"clientConfig": constant.ClientConfig{
 			TimeoutMs:           20000,
-			ListenInterval:      10000,
+			ListenInterval:      30000,
 			NotLoadCacheAtStart: true,
 			NamespaceId:	     config.NamespaceId,
 			AccessKey: 			 config.AccessKey,
