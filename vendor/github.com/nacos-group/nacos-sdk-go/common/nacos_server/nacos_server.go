@@ -50,12 +50,14 @@ func NewNacosServer(serverList []constant.ServerConfig, clientCfg constant.Clien
 		vipSrvRefInterMills: 10000,
 	}
 	ns.initRefreshSrvIfNeed()
+	log.Printf("=====================into nacos_server.Login")
 	_, err := securityLogin.Login()
 
 	if err != nil {
 		return ns, err
 	}
 
+  log.Printf("=====================into nacos_server.AutoRefresh")
 	securityLogin.AutoRefresh()
 	return ns, nil
 }

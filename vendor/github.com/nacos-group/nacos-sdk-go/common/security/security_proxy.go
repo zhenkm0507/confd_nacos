@@ -57,8 +57,9 @@ func (ac *AuthClient) AutoRefresh() {
 
 	go func() {
 		ticker := time.NewTicker(time.Millisecond * 5)
-
+    log.Printf("=====================into security_proxy.AutoRefresh")
 		for range ticker.C {
+		  log.Printf("=====================into security_proxy.AutoRefresh for")
 			_, err := ac.Login()
 			if err != nil {
 				log.Printf("[ERROR]: login has error %s", err)
@@ -68,8 +69,10 @@ func (ac *AuthClient) AutoRefresh() {
 }
 
 func (ac *AuthClient) Login() (bool, error) {
+  log.Printf("=====================into security_proxy.Login")
 	var throwable error = nil
 	for i := 0; i < len(ac.serverCfgs); i++ {
+	  log.Printf("=====================into security_proxy.Login for %s",i)
 		result, err := ac.login(ac.serverCfgs[i])
 		throwable = err
 		if result {
