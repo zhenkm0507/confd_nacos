@@ -111,6 +111,9 @@ func (ac *AuthClient) login(server constant.ServerConfig) (bool, error) {
 		header := http.Header{}
 		resp, err := ac.agent.Post(reqUrl, header, ac.clientCfg.TimeoutMs, map[string]string{})
 
+		log.Printf("[INFO] ========================login:%s ", reqUrl)
+
+
 		if err != nil {
 			return false, err
 		}
