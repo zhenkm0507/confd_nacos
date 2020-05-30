@@ -111,7 +111,10 @@ func (ac *AuthClient) login(server constant.ServerConfig) (bool, error) {
 		header := http.Header{}
 		resp, err := ac.agent.Post(reqUrl, header, ac.clientCfg.TimeoutMs, map[string]string{})
 
+		log.Info(fmt.Sprintf("========================loginurl=%s", reqUrl))
+
 		if err != nil {
+		  log.Info(fmt.Sprintf("========================login error 1=%s", err))
 			return false, err
 		}
 
@@ -119,11 +122,13 @@ func (ac *AuthClient) login(server constant.ServerConfig) (bool, error) {
 		bytes, err = ioutil.ReadAll(resp.Body)
 		defer resp.Body.Close()
 		if err != nil {
+		  log.Info(fmt.Sprintf("========================login error 2=%s", err))
 			return false, err
 		}
 
 		if resp.StatusCode != 200 {
 			errMsg := string(bytes)
+			log.Info(fmt.Sprintf("========================login error 3=%s", errMsg))
 			return false, errors.New(errMsg)
 		}
 
@@ -132,6 +137,7 @@ func (ac *AuthClient) login(server constant.ServerConfig) (bool, error) {
 		err = json.Unmarshal(bytes, &result)
 
 		if err != nil {
+		  log.Info(fmt.Sprintf("========================login error 3=%s", err))
 			return false, err
 		}
 
